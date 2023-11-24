@@ -750,13 +750,15 @@ $btn-mb: 0.5rem;
       @extend %clickable-transition;
       @extend %sidebar-link-hover;
 
-      color: var(--site-title-color);
+      // color: var(--site-title-color);
+      color: var(--avatar-border-color);
     }
   }
 
   .site-subtitle {
     font-size: 95%;
-    color: var(--site-subtitle-color);
+    // color: var(--site-subtitle-color);
+     color: var(--avatar-border-color);
     margin-top: 0.25rem;
     word-spacing: 1px;
     -webkit-user-select: none;
