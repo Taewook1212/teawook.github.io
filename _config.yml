@@ -1,5 +1,8 @@
 # The Site Configuration
 
+include:
+  - _javascript
+
 # Import the theme
 theme: jekyll-theme-chirpy
 
@@ -29,7 +32,7 @@ github:
   username: taewook1212 # change to your github username
 
 twitter:
-  username:  # change to your twitter username
+  username: # change to your twitter username
 
 social:
   # Change to your full name.
@@ -70,7 +73,6 @@ theme_mode: # [light|dark]
 # will be added to all image (site avatar & posts' images) paths starting with '/'
 #
 # e.g. 'https://cdn.com'
-
 
 # the avatar on sidebar, support local or CORS resources
 avatar: "/assets/img/me.jpg"
