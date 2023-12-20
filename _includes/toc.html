@@ -1,13 +1,34 @@
-{% assign enable_toc = false %}
-{% if site.toc and page.toc %}
-  {% if page.content contains '<h2' or page.content contains '<h3' %}
-    {% assign enable_toc = true %}
-  {% endif %}
-{% endif %}
-
-{% if enable_toc %}
-  <section id="toc-wrapper" class="ps-0 pe-4">
-    <h2 class="panel-heading ps-3 pt-2 mb-2">{{- site.data.locales[include.lang].panel.toc -}}</h2>
-    <nav id="toc"></nav>
-  </section>
+{% assign enable_toc = false %} {% if site.toc and page.toc %} {% if
+page.content contains '<h2' or page.content contains '<h3' %} {% assign
+enable_toc = true %} {% endif %} {% endif %} {% if enable_toc %}
+<section id="toc-wrapper" class="ps-0 pe-4">
+  <h2 class="panel-heading ps-3 pt-2 mb-2">
+    {{- site.data.locales[include.lang].panel.toc -}}
+  </h2>
+  <nav id="toc" class="toc">
+    <ul>
+      {% assign headings = site.pages | where_exp: "item", "item.title" %} {%
+      for heading in headings %} {% if heading.title %}
+      <li>
+        <a href="{{ heading.url }}">{{ heading.title }}</a>
+      </li>
+      {% endif %} {% endfor %}
+    </ul>
+  </nav>
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var toc = "";
+      var headings = document.querySelectorAll("main h2");
+      var tocElement = document.getElementById("toc");
+      toc += "<ul>";
+      headings.forEach(function (heading, index) {
+        var id = "toc-heading-" + index;
+        heading.id = id;
+        toc += '<li><a href="#' + id + '">' + heading.textContent + "</a></li>";
+      });
+      toc += "</ul>";
+      tocElement.innerHTML = toc;
+    });
+  </script>
+</section>
 {% endif %}
